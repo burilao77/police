@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Crud con Laravel 5.4</title>
+    <meta charset="UTF-8">
+    <title>Crud con Laravel 5.4</title>
 
 
   {!!Html::style('css/bootstrap.min.css')!!}
@@ -28,18 +28,7 @@
                 <li class="active"><a href="#">Home</a></li>
                 <li>{!! link_to_route('complaint.index', $title = 'Lista Denuncias') !!}</li>
                <li>{!! link_to_route('category.index', $title = 'Categorias') !!}</li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
+                <li>{!! link_to_route('login', $title = 'Login') !!}</li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
@@ -47,9 +36,9 @@
 
 
 <div class="container">
-	<div class="row">
-		@yield('content')
-	</div>
+    <div class="row">
+        @yield('content')
+    </div>
 </div>
     {!!Html::script('/js/jquery.min.js')!!}
     {!!Html::script('/js/bootstrap.min.js')!!}

@@ -16,11 +16,15 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['web']], function(){
-	Route::resource('complaint', 'ComplaintController');
+    Route::resource('complaint', 'ComplaintController');
 });
 
 Route::group(['middleware' => ['web']], function(){
-	Route::resource('category', 'CategoryController');
+    Route::resource('category', 'CategoryController');
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use App\Complaint;
 
+
 class ComplaintController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +24,7 @@ class ComplaintController extends Controller
      */
     public function index()
     {
+
         $complaints = Complaint::all();
         return view('complaint.index', ['complaints' => $complaints]);
     }
@@ -29,7 +36,9 @@ class ComplaintController extends Controller
      */
     public function create()
     {
-        $opciones = DB::table('categories')->select('name')->get();
+
+
+        $opciones = DB::table('categories')->pluck('name', 'id')->all();
         // agregamos la opción 'Seleccione una Empresa' con índice 0 al array
 /*        dd($opciones_denuncia);
         exit();*/
@@ -45,6 +54,7 @@ class ComplaintController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,[
             'title' => 'required',
             'description' => 'required',
@@ -53,7 +63,7 @@ class ComplaintController extends Controller
         $complaint = new complaint;
         $complaint->title = $request->title;
         $complaint->description = $request->description;
-        //$complaint->categories_id = $request->get('categories_id');
+        $complaint->categories_id = $request->get('categories_id');
         $complaint->save();
 
         Session::flash('message', 'La denuncia fue Creada con Exito');
@@ -69,6 +79,8 @@ class ComplaintController extends Controller
     public function show($id)
     {
         //
+    $complaint = Complaint::findOrFail($id);
+    return view('complaint.show', ['complaint'=>$complaint]);
     }
 
     /**

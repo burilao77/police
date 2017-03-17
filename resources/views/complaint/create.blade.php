@@ -1,46 +1,100 @@
 @extends('master')
-	@section('content')
+    @section('content')
 <div class="row">
-	<div class="col-md-12">
-		<h1>Crear Denuncia</h1>
-	</div>
+    <div class="col-md-12">
+        <h1>Crear Denuncia</h1>
+    </div>
 </div>
+{!! Form::open(['route' => 'complaint.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+<!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#title" aria-controls="title" role="tab" data-toggle="tab">Titulo</a>
+    </li>
+    <li role="presentation">
+      <a href="#description" aria-controls="description" role="tab" data-toggle="tab">Descripcion</a>
+    </li>
+    <li role="presentation">
+      <a href="#category" aria-controls="category" role="tab" data-toggle="tab">Categoria</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="title">
+        <div class="col-xs-9">
+            <div class="panel-body">
+                <div class="form-group">
+                    {!! Form::label('title', 'Titulo') !!}
+                    {!! Form::text('title', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa un Titulo'])!!}
+
+                </div>
+            </div>
+        </div>
+      <!--- ...  -->
+    </div>
+    <div role="tabpanel" class="tab-pane" id="description">
+        <div class="col-xs-9">
+            <div class="panel-body">
+                <div class="form-group">
+                    {!! Form::label('description', 'Descripción') !!}
+                    {!! Form::textarea('description', null, ['class' => 'form-control', 'size' => '30x5', 'required', 'placeholder' => 'Ingresa una Descripción']) !!}
+                </div>
+            </div>
+        </div>
+      </div>
+    <div role="tabpanel" class="tab-pane" id="category">
+        <div class="col-xs-9">
+            <div class="panel-body">
+                <div class="form-group">
+                    {!! Form::label('category', 'Categoría') !!}
+                    {!! Form::select('categories_id', $opciones, null, ['class' => 'form-control', 'required' => 'required'])!!}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <div class="panel-body">
+            <div class="form-group">
+                {!! Form::submit('Registrar Denuncia', ['class' => 'btn btn-info']) !!}
+
+            </div>
+            {!! Form::close() !!}
+              </div>
+        </div>
+      </div>
+
+</div>
+
+
+<!--
 <div class="row">
 
-	<div class="col-md-12">
-		<div class="panel-body">
-		{!! Form::open(['route' => 'complaint.store', 'method' => 'POST']) !!}
-    		<div class="form-group">
-    			{!! Form::label('title', 'Titulo') !!}
-    			{!! Form::text('title', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa un Titulo'])!!}
-    		</div>
-    		<div class="form-group">
-    			{!! Form::label('description', 'Descripción') !!}
-    			{!! Form::text('description', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa una Descripción']) !!}
-    		</div>
+    <div class="col-md-12">
+        <div class="panel-body">
+        {!! Form::open(['route' => 'complaint.store', 'method' => 'POST']) !!}
+            <div class="form-group">
+                {!! Form::label('title', 'Titulo') !!}
+                {!! Form::text('title', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingresa un Titulo'])!!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('description', 'Descripción') !!}
+                {!! Form::textarea('description', null, ['class' => 'form-control', 'size' => '30x5', 'required', 'placeholder' => 'Ingresa una Descripción']) !!}
+            </div>
             <div class="form-group">
                 {!! Form::label('category', 'Categoría') !!}
-
-                {!! Form::select('categories_id', ['options' => $opciones])!!}
+                {!! Form::select('categories_id', $opciones, null, ['class' => 'form-control', 'required' => 'required'])!!}
             </div>
-<!--              <div>
-                <div class="form-group">
-                    {!!Form::label('fecha de denuncia')!!}
-                    {!! Form::date('month', null, ['class' => 'form-control'])  !!}
-                </div>
-            </div>  -->
-    		 <div class="form-group">
-    			{!! Form::submit('Registrar Denuncia', ['class' => 'btn btn-info']) !!}
 
-    		</div>
-		{!! Form::close() !!}
-		</div>
-	</div>
+             <div class="form-group">
+                {!! Form::submit('Registrar Denuncia', ['class' => 'btn btn-info']) !!}
+
+            </div>
+        {!! Form::close() !!}
+        </div>
+    </div>
+
 
 </div>
-
-
-
-
+-->
 
 @stop
