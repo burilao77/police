@@ -16,7 +16,9 @@
              <p class="info">Descripción:&nbsp;&nbsp;{{$complaint->description}}</p>
              <p class="info">Creado el:&nbsp;&nbsp;{{ $complaint->created_at->format('d-m-Y')}}</p>
              <p class="info">Modificado el:&nbsp;&nbsp;{{ $complaint->updated_at->format('d-m-Y') }}</p>
-             <p class="info">Categoría:&nbsp;&nbsp;{{$complaint->categories_id}}</p>
+
+
+             <p class="info">Categoría:&nbsp;&nbsp;{{$cat[$complaint->id]}}</p>
 
         {!! Form::close() !!}
         </div>

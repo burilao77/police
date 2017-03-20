@@ -13,6 +13,6 @@ class Category extends Model
 
     public function complaint()
     {
-    	return $this->belongsTo('App\Complaint');
+        return $this->belongsTo('App\Complaint');
     }
 }

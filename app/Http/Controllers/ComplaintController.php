@@ -80,7 +80,8 @@ class ComplaintController extends Controller
     {
         //
     $complaint = Complaint::findOrFail($id);
-    return view('complaint.show', ['complaint'=>$complaint]);
+        $cat = DB::table('categories')->pluck('name', 'id')->all();
+    return view('complaint.show', ['complaint'=>$complaint, 'cat' => $cat]);
     }
 
     /**
@@ -111,6 +112,8 @@ class ComplaintController extends Controller
             'description' => 'required',
             ]);
         // editando datos
+
+
             $complaint = Complaint::findOrFail($id);
             $complaint->title = $request->title;
             $complaint->description = $request->description;
