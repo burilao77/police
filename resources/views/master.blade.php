@@ -7,6 +7,7 @@
 
   {!!Html::style('css/bootstrap.min.css')!!}
    {!!Html::style('css/font-awesome.min.css')!!}
+   {!!Html::style('css/select2.min.css')!!}
 
 
 </head>
@@ -40,8 +41,10 @@
         @yield('content')
     </div>
 </div>
-    {!!Html::script('/js/jquery.min.js')!!}
+    {!!Html::script('/js/jquery-2.1.0.js')!!}
+    
     {!!Html::script('/js/bootstrap.min.js')!!}
+     {!!Html::script('/js/select2.min.js')!!}
 
 </body>
 </html>

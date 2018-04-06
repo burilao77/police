@@ -36,7 +36,9 @@
 								<input type="hidden" name="_method" value="delete">	
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">	
 								<a href="{{route('category.edit', $category->id)}}" class="btn btn-primary">Edit</a>
-								<input type="submit" class="btn btn-danger" onclick="return confirm('Esta seguro de Eliminar esta Categoría');" name="name" value="delete">									
+								<input type="submit" class="btn btn-danger" onclick="return confirm('Esta seguro de Eliminar esta Categoría');" name="name" value="delete">	
+
+								<a href="{{route('category.show', $category->id)}}" class="btn btn-info">Ver Denuncias</a>								
 								</form>
 							</td>
 						</tr>

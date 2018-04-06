@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('profile', 'UserController@profile');
+Route::post('profile', 'UserController@update_avatar');
+
 Route::group(['middleware' => ['web']], function(){
     Route::resource('complaint', 'ComplaintController');
 });

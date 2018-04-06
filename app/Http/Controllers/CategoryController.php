@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
@@ -43,6 +44,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // validando datos
         $this->validate($request,[
             'name' => 'required',
             'description' => 'required',
@@ -65,8 +67,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $categories = Category::findOrFail($id);
+       
+        $denuncias = DB::table('complaints')->pluck('title', 'id')->all();
+         
+    return view('category.show', ['categories'=>$categories, 'denuncias' => $denuncias]);
     }
+    
 
     /**
      * Show the form for editing the specified resource.

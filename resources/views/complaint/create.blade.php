@@ -1,4 +1,5 @@
 @extends('master')
+   
     @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -47,8 +48,13 @@
         <div class="col-xs-9">
             <div class="panel-body">
                 <div class="form-group">
-                    {!! Form::label('category', 'Categoría') !!}
-                    {!! Form::select('categories_id', $opciones, null, ['class' => 'form-control', 'required' => 'required'])!!}
+                    
+        <select class="js-example-basic-single form-control" name="category">
+            @foreach($opciones as $key => $op)
+            <option value="{{ $key }}">{{ $op }}</option>
+            @endforeach
+          </select>
+                   
                 </div>
             </div>
         </div>
@@ -62,8 +68,13 @@
               </div>
         </div>
       </div>
-
+<script>
+$(document).ready(function() {
+    $('.js-example-basic-single form-control').select2();
+});
+</script>
 </div>
+
 
 
 <!--

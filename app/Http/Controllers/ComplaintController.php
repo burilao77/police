@@ -37,13 +37,12 @@ class ComplaintController extends Controller
     public function create()
     {
 
-
+        // creamos la variable opciones para recuperar las categorias 
+        // y llamarla desde el campo select de la vista CreateComplaint
         $opciones = DB::table('categories')->pluck('name', 'id')->all();
-        // agregamos la opción 'Seleccione una Empresa' con índice 0 al array
-/*        dd($opciones_denuncia);
-        exit();*/
+      
         return view('complaint.create', ['opciones' => $opciones]);
-        //return view('complaint.create');
+        
     }
 
     /**
